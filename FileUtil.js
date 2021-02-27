@@ -28,7 +28,7 @@ exports.writeFile=function (gcodes)
 
     let content='';
     gcodes.map(gcode=>{
-        content+='G1 F'+gcode.feed+' X'+gcode.x.toFixed(2)+' Y'+gcode.y.toFixed(2)+' Z'+gcode.z.toFixed(2)+' E'+gcode.e.toFixed(2)+'\n'
+        content+='G1 F'+gcode.feed+' X'+gcode.x.toFixed(2)+' Y'+gcode.y.toFixed(2)+' Z'+gcode.z.toFixed(2)+' E'+gcode.e.toFixed(2)+ (gcode.comment==undefined?'':' ;'+gcode.comment)+'\n'
     })
 
     fs.writeFile('out.gcode', GCODE_FILE_CONTENT_HEADER+content+GCODE_FILE_CONTENT_FOOTER, err => {
